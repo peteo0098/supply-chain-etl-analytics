@@ -80,17 +80,18 @@ Advanced SQL queries revealed critical operational anomalies:
 ### Installation & Execution
 1. Clone the repository:
    git clone https://github.com/peteo0098/supply-chain-etl-analytics.git
+
    cd supply-chain-etl-analytics
 
-2. Install dependencies:
+3. Install dependencies:
    pip install pandas sqlalchemy psycopg2
 
-3. Configure database credentials in `01_etl_pipeline.py`:
+4. Configure database credentials in `01_etl_pipeline.py`:
    DB_USER = 'postgres'
    DB_PASSWORD = 'your_password'
    DB_HOST = 'localhost'
    DB_PORT = '5432'
    DB_NAME = 'postgres'
 
-4. Run the ETL process:
+5. Run the ETL process:
    python 01_etl_pipeline.py
