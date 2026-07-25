@@ -10,6 +10,16 @@ This project delivers a complete **ETL (Extract, Transform, Load)** data pipelin
 
 ---
 
+## 📊 Interactive Power BI Dashboards
+
+### Page 1: Executive Overview
+![Executive Overview](page1_executive_overview.png)
+
+### Page 2: Risk & Profitability Analysis
+![Risk and Profitability Analysis](page2_risk_profitability.png)
+
+---
+
 ## 🏗️ Architecture & Data Flow
 
 +------------------+      +--------------------------+      +-----------------------+      +-------------------+
@@ -19,11 +29,11 @@ This project delivers a complete **ETL (Extract, Transform, Load)** data pipelin
 
 1. **Extract**: Ingestion of 180,000+ transactional records from raw CSV data.
 2. **Transform**: 
-   * Data cleansing and handling of missing attributes.
+   * Data cleansing and handling of missing attributes (`01_etl_pipeline.py`).
    * Extraction of unique entities for dimensional tables.
    * Generating smart date keys (`strftime('%Y%m%d')`) for time dimension indexing.
 3. **Load**: Automated loading into PostgreSQL database using `SQLAlchemy` and `psycopg2`.
-4. **Analytics**: Optimized SQL Views creation and business KPI tracking in Power BI.
+4. **Analytics**: SQL DWH Schema, Views creation (`02_dwh_schema_and_views.sql`), and KPI tracking in Power BI.
 
 ---
 
@@ -75,7 +85,7 @@ Advanced SQL queries revealed critical operational anomalies:
 2. Install dependencies:
    pip install pandas sqlalchemy psycopg2
 
-3. Configure database credentials in `etl_pipeline.py`:
+3. Configure database credentials in `01_etl_pipeline.py`:
    DB_USER = 'postgres'
    DB_PASSWORD = 'your_password'
    DB_HOST = 'localhost'
@@ -83,4 +93,4 @@ Advanced SQL queries revealed critical operational anomalies:
    DB_NAME = 'postgres'
 
 4. Run the ETL process:
-   python etl_pipeline.py
+   python 01_etl_pipeline.py
