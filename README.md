@@ -22,10 +22,12 @@ This project delivers a complete **ETL (Extract, Transform, Load)** data pipelin
 
 ## 🏗️ Architecture & Data Flow
 
+```text
 +------------------+      +--------------------------+      +-----------------------+      +-------------------+
 |  DataCo Dataset  | ---> |  Python ETL (Pandas)     | ---> | PostgreSQL DWH        | ---> | Power BI          |
 |  (Raw CSV)       |      |  Cleanse & Transform     |      | (Star Schema + Views) |      | Executive Report  |
 +------------------+      +--------------------------+      +-----------------------+      +-------------------+
+```
 
 1. **Extract**: Ingestion of 180,000+ transactional records from raw CSV data.
 2. **Transform**: 
@@ -79,19 +81,26 @@ Advanced SQL queries revealed critical operational anomalies:
 
 ### Installation & Execution
 1. Clone the repository:
-   git clone https://github.com/peteo0098/supply-chain-etl-analytics.git
+```bash
+git clone https://github.com/peteo0098/supply-chain-etl-analytics.git
+cd supply-chain-etl-analytics
+```
 
-   cd supply-chain-etl-analytics
+2. Install dependencies:
+```bash
+pip install pandas sqlalchemy psycopg2
+```
 
-3. Install dependencies:
-   pip install pandas sqlalchemy psycopg2
+3. Configure database credentials in `01_etl_pipeline.py`:
+```python
+DB_USER = 'postgres'
+DB_PASSWORD = 'your_password'
+DB_HOST = 'localhost'
+DB_PORT = '5432'
+DB_NAME = 'postgres'
+```
 
-4. Configure database credentials in `01_etl_pipeline.py`:
-   DB_USER = 'postgres'
-   DB_PASSWORD = 'your_password'
-   DB_HOST = 'localhost'
-   DB_PORT = '5432'
-   DB_NAME = 'postgres'
-
-5. Run the ETL process:
-   python 01_etl_pipeline.py
+4. Run the ETL process:
+```bash
+python 01_etl_pipeline.py
+```
